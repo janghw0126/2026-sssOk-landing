@@ -447,7 +447,15 @@ nav .wrap {
   transform: rotate(4deg) translate(var(--px, 0px), var(--py, 0px));
 }
 
-/* .ph-main 의 rise(0.35s 지연, 0.9s) 를 감싸듯 좌우가 앞뒤로 따라온다 */
+/* 왼쪽 → 오른쪽 → 가운데(.ph-main, 0.35s) 순서로 하나씩 뜬다.
+   duration·이징은 .ph-main 의 rise 와 맞춘다 (rv-fade-in 기본값은 0.7s 라
+   속도가 달라 보였다) */
+.ph-left.rv-fade.in,
+.ph-right.rv-fade.in {
+  animation-duration: 0.9s;
+  animation-timing-function: cubic-bezier(0.2, 1.2, 0.4, 1);
+}
+
 .ph-left.rv-fade.in {
   animation-delay: 0.15s;
 }
@@ -471,9 +479,9 @@ nav .wrap {
   z-index: 4;
 }
 
-/* ph-main 이 다 내려앉은 뒤 마지막으로 빼꼼 튀어나온다 */
+/* 사진 3장과 같은 타이밍에 같이 뜬다 */
 .art-char.rv-pop.in {
-  animation-delay: 0.95s;
+  animation-delay: 0.35s;
 }
 
 @keyframes bob {
@@ -834,9 +842,18 @@ nav .wrap {
     grid-template-columns: 1fr;
   }
 
-  .card .ch,
+  /* .card .ch 는 고정 높이(120px)를 유지한다 — 캐릭터 PNG마다 세로 비율이
+     달라서(character4.png 는 유독 납작함) height:auto 로 풀면 카드마다
+     이미지 영역 높이가 달라져 카드 크기가 들쭉날쭉해 보였다 */
   .step .ch {
     height: auto;
+  }
+
+  /* 1열로 쌓이면 grid 의 "같은 행" 늘어남이 안 먹혀서, 카드마다 본문 글자
+     수가 달라 줄바꿈 수가 다르면 카드 높이도 들쭉날쭉해진다. 세 카드 중
+     제일 긴 높이에 맞춰 최소 높이를 줘서 맞춘다 */
+  .cards3 .card {
+    min-height: 336px;
   }
 
   .cards4,
