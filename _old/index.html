@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>쏙 — 카톡에 흩어진 우리 사진, 여기에 쏙</title>
+<meta name="description" content="로그인 없이 링크 하나로. 다 같이 모으는 사진 공간, 쏙." />
+<meta name="theme-color" content="#FFF6E9" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="쏙" />
+<meta property="og:title" content="카톡에 흩어진 우리 사진, 여기에 쏙" />
+<meta property="og:description" content="로그인 없이 링크 하나로. 다 같이 모으는 사진 공간" />
+<meta property="og:image" content="./assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="./assets/favicon.png" />
+<link rel="preload" as="image" href="./assets/photo-1.jpg" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+<a class="skip" href="#demo">데모로 건너뛰기</a>
+
+<header class="nav">
+  <span class="logo">sssOK</span>
+  <a class="nav-link" href="#intent" data-cta="nav">알림 받기</a>
+</header>
+
+<main>
+
+<!-- ─────────── 1. Hero ─────────── -->
+<section class="hero" data-section="hero">
+  <div class="wrap hero-inner">
+    <svg class="mole" viewBox="0 0 240 200" role="img" aria-label="구멍에서 고개를 내민 두더지 쏙이">
+      <ellipse cx="120" cy="158" rx="112" ry="34" fill="#EFDFC6" />
+      <ellipse cx="120" cy="156" rx="84" ry="23" fill="#4E392C" />
+      <g class="mole-body">
+        <ellipse cx="46" cy="138" rx="19" ry="16" fill="#F26D2C" />
+        <ellipse cx="194" cy="138" rx="19" ry="16" fill="#F26D2C" />
+        <circle cx="84" cy="70" r="16" fill="#F26D2C" />
+        <circle cx="156" cy="70" r="16" fill="#F26D2C" />
+        <ellipse cx="120" cy="104" rx="58" ry="54" fill="#F26D2C" />
+        <ellipse cx="120" cy="126" rx="38" ry="27" fill="#FFE1C4" />
+        <ellipse cx="100" cy="90" rx="8" ry="9" fill="#2E221C" />
+        <ellipse cx="140" cy="90" rx="8" ry="9" fill="#2E221C" />
+        <circle cx="97.5" cy="86.5" r="2.6" fill="#fff" />
+        <circle cx="137.5" cy="86.5" r="2.6" fill="#fff" />
+        <ellipse cx="120" cy="116" rx="8" ry="6" fill="#3A2820" />
+        <path d="M112 126 q8 8 16 0" stroke="#3A2820" stroke-width="3" fill="none" stroke-linecap="round" />
+      </g>
+      <path d="M8 158 a112 34 0 0 0 224 0 z" fill="#EFDFC6" />
+    </svg>
+
+    <h1>카톡에 흩어진 우리 사진,<br /><em>여기에 쏙</em></h1>
+    <p class="sub">로그인 없이, 링크 하나로.<br />다 같이 모으는 사진 공간</p>
+
+    <a class="scroll-cue" href="#demo" data-cta="hero_scroll">
+      아래에서 직접 해보세요
+      <span class="cue-arrow" aria-hidden="true"></span>
+    </a>
+  </div>
+</section>
+
+<!-- ─────────── 2. 데모 ─────────── -->
+<section class="demo" id="demo" data-section="demo">
+  <div class="wrap">
+    <h2 class="eyebrow">직접 넣어보세요</h2>
+    <p class="lede">사진을 누르면 구멍으로 쏙 들어가요</p>
+
+    <div class="phone" id="phone">
+      <div class="phone-bar"><span class="phone-title">우리 동아리 MT</span><span class="phone-count" id="count">0장</span></div>
+
+      <div class="toast-slot"><div class="toast" id="toast" role="status" aria-live="polite"></div></div>
+
+      <div class="grid" id="grid" role="group" aria-label="모인 사진"></div>
+
+      <div class="hole-row">
+        <svg class="mini-mole" id="miniMole" viewBox="0 0 120 80" aria-hidden="true">
+          <ellipse cx="60" cy="62" rx="56" ry="16" fill="#EFDFC6" />
+          <ellipse cx="60" cy="61" rx="40" ry="11" fill="#4E392C" />
+          <g class="mini-body">
+            <circle cx="42" cy="30" r="8" fill="#F26D2C" />
+            <circle cx="78" cy="30" r="8" fill="#F26D2C" />
+            <ellipse cx="60" cy="44" rx="27" ry="25" fill="#F26D2C" />
+            <ellipse cx="60" cy="54" rx="17" ry="12" fill="#FFE1C4" />
+            <circle cx="51" cy="38" r="3.6" fill="#2E221C" />
+            <circle cx="69" cy="38" r="3.6" fill="#2E221C" />
+            <ellipse cx="60" cy="49" rx="3.6" ry="2.8" fill="#3A2820" />
+          </g>
+          <path d="M4 62 a56 16 0 0 0 112 0 z" fill="#EFDFC6" />
+        </svg>
+      </div>
+
+      <div class="tray" id="tray" role="group" aria-label="넣을 사진"></div>
+
+      <div class="demo-foot">
+        <button class="btn btn-primary hidden" id="demoCta" type="button">우리 모임에도 써보기</button>
+        <div class="own">
+          <label class="own-link" for="ownFile">내 사진으로 해볼래요</label>
+          <input type="file" id="ownFile" accept="image/*" multiple hidden />
+          <span class="own-note">어디에도 업로드되지 않아요. 이 브라우저에서만 보여요</span>
+        </div>
+        <button class="reset" id="reset" type="button">처음부터 다시</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── 3. Problem ─────────── -->
+<section class="problem" data-section="problem">
+  <div class="wrap">
+    <h2>그때 그 사진,<br />아직 갖고 있어?</h2>
+    <ul class="pains">
+      <li><strong>화질은 뭉개지고</strong><span>카톡을 거치면 원본이 아니게 돼요</span></li>
+      <li><strong>링크는 만료되고</strong><span>몇 주 지나면 아무것도 안 남아요</span></li>
+      <li class="pain-big"><strong>그리고 아무도 안 올려주고</strong><span>단톡방에 세 번 재촉하는 그 피로</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────── 4. Why 쏙 ─────────── -->
+<section class="why" data-section="why">
+  <div class="wrap">
+    <h2>왜 쏙이냐면</h2>
+    <div class="table-scroll">
+      <table class="compare">
+        <caption class="sr-only">카톡, 구글 드라이브, 에어드롭과 쏙의 비교</caption>
+        <thead>
+          <tr><th scope="col"><span class="sr-only">항목</span></th><th scope="col">카톡</th><th scope="col">드라이브</th><th scope="col">에어드롭</th><th scope="col" class="me">쏙</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">원본 화질</th><td class="no">✕</td><td class="ok">○</td><td class="ok">○</td><td class="me ok">○</td></tr>
+          <tr><th scope="row">가입 없이</th><td class="ok">○</td><td class="no">✕</td><td class="ok">○</td><td class="me ok">○</td></tr>
+          <tr class="key"><th scope="row">여럿이 동시에</th><td class="mid">△</td><td class="mid">△</td><td class="no">✕</td><td class="me ok">○</td></tr>
+          <tr><th scope="row">나중에 다시</th><td class="no">✕</td><td class="ok">○</td><td class="no">✕</td><td class="me ok">○</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="why-note">링크 하나 뿌리면, 다들 알아서 모아줘요. 그게 쏙이 하는 일이에요.</p>
+  </div>
+</section>
+
+<!-- ─────────── 5. 의도 수집 ─────────── -->
+<section class="intent" id="intent" data-section="intent">
+  <div class="wrap intent-card">
+
+    <div id="step1">
+      <h2>준비되면 알려드릴게요</h2>
+      <p class="lede">쏙은 아직 만들어지는 중이에요. 나오면 제일 먼저 알려드릴게요.</p>
+      <form id="emailForm" novalidate>
+        <label class="sr-only" for="email">이메일</label>
+        <div class="field-row">
+          <input type="email" id="email" name="email" placeholder="이메일 주소" autocomplete="email" required />
+          <button class="btn btn-primary" type="submit">알림 받기</button>
+        </div>
+        <p class="err" id="emailErr" role="alert" hidden>이메일 주소를 다시 확인해 주세요</p>
+      </form>
+    </div>
+
+    <div id="step2" hidden>
+      <h2>고마워요!</h2>
+      <p class="lede">하나만 더 여쭤볼게요. 답하지 않아도 괜찮아요.</p>
+
+      <fieldset class="fs">
+        <legend>어떤 모임에 쓰실 건가요?</legend>
+        <div class="chips" id="chips">
+          <button type="button" class="chip" data-v="mt">MT</button>
+          <button type="button" class="chip" data-v="graduation">졸업사진</button>
+          <button type="button" class="chip" data-v="workshop">워크샵</button>
+          <button type="button" class="chip" data-v="study">스터디</button>
+          <button type="button" class="chip" data-v="club_regular">동아리 정기모임</button>
+          <button type="button" class="chip" data-v="etc">기타</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="fs">
+        <legend>언제쯤 있나요?</legend>
+        <div class="field-row">
+          <input type="month" id="when" name="when" />
+          <button type="button" class="chip" id="unknown" data-v="unknown">아직 몰라요</button>
+        </div>
+      </fieldset>
+
+      <button class="btn btn-primary block" id="detailSubmit" type="button">보내기</button>
+    </div>
+
+    <div id="step3" hidden>
+      <h2>다 됐어요</h2>
+      <p class="lede">혹시 10분만, 사진 모을 때 이야기를 들려주실 수 있을까요?<br />직접 듣는 이야기가 제일 큰 도움이 돼요.</p>
+      <div class="field-row">
+        <button class="btn btn-primary" id="yes" type="button">좋아요</button>
+        <button class="btn btn-ghost" id="no" type="button">다음에</button>
+      </div>
+    </div>
+
+    <div id="step4" hidden>
+      <h2>고마워요, 곧 만나요</h2>
+      <p class="lede">준비되는 대로 메일로 알려드릴게요.</p>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span class="logo small">sssOK</span>
+    <p>우아한테크코스 8기 · 쏙 팀</p>
+  </div>
+</footer>
+
+<div class="stickybar" id="stickybar" hidden>
+  <button class="btn btn-primary block" id="stickyCta" type="button">출시되면 알림 받기</button>
+</div>
+
+<div class="debug" id="debug" hidden><strong>events</strong><ol id="debugList"></ol></div>
+
+<script src="./main.js"></script>
+</body>
+</html>

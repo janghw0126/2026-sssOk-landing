@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>쏙 — 사진 공유, 쏙으로 더 가볍게</title>
+    <meta
+      name="description"
+      content="모으고, 고르고, 쏙 나누세요. 여행이나 모임이 끝난 뒤, 링크 하나만 보내면 끝. 설치 없이 바로 들어와 사진을 올리고 원하는 사진만 받아가요."
+    />
+    <meta name="theme-color" content="#FFF6E9" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="쏙" />
+    <meta property="og:title" content="사진 공유, 쏙으로 더 가볍게" />
+    <meta
+      property="og:description"
+      content="모으고, 고르고, 쏙 나누세요. 링크 하나만 보내면 끝"
+    />
+    <meta property="og:image" content="./assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="./assets/favicon.png" />
+    <link rel="preload" as="image" href="./assets/four.png" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <nav id="nav">
+      <div class="wrap">
+        <a href="#" class="logo"
+          ><img src="./assets/characte8.png" alt="" /> 쏙</a
+        >
+        <button class="btn" onclick="focusForm()">출시 알림 받기</button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>
+            <span class="w">사진</span> <span class="w">공유,</span><br /><span
+              class="w"
+              ><em>쏙</em>으로</span
+            ><br /><span class="w">더</span> <span class="w">가볍게.</span>
+          </h1>
+          <p class="tagline rv rv-hero">모으고, 고르고, 쏙 나누세요</p>
+          <p class="lede rv rv-hero">
+            여행이나 모임이 끝난 뒤, 링크 하나만 보내면 끝!<br />
+            설치 없이 바로 들어와 사진을 올리고 원하는 사진만 받아가요.
+          </p>
+        </div>
+        <div class="art" id="art">
+          <div class="phones">
+            <div class="ph ph-left rv-fade rv-hero">
+              <img
+                src="./assets/one.png"
+                alt="쏙 첫 화면 — 사진 모으고 바로 쏙 나누기"
+              />
+            </div>
+            <div class="ph ph-right rv-fade rv-hero">
+              <img
+                src="./assets/five.png"
+                alt="QR 또는 참여 코드로 공유방에 들어가는 화면"
+              />
+            </div>
+            <div class="ph ph-main">
+              <img
+                src="./assets/four.png"
+                alt="공유방에서 사진을 훑어보고 필요한 것만 골라 담는 화면"
+              />
+            </div>
+            <img
+              class="art-char rv-pop rv-hero"
+              src="./assets/characte8.png"
+              alt="구멍에서 빼꼼 올라온 쏙이"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PROBLEM -->
+    <section>
+      <div class="wrap">
+        <div class="sec-head rv">
+          <h2>이런 적, 있지 않으셨나요?</h2>
+          <p>단체 사진 공유는 보내는 쪽도, 받는 쪽도 불편해요.</p>
+        </div>
+        <div class="cards3">
+          <div class="card rv">
+            <div class="ch">
+              <img
+                src="./assets/character3.png"
+                alt="사진을 잔뜩 들고 있는 쏙이"
+              />
+            </div>
+            <h3>95장을 세 번에 나눠서</h3>
+            <p>
+              카톡의 경우, 한 번에 30장까지만 되니까 30·30·30·5로 쪼개집니다.
+              어디까지 보냈는지 헷갈리기 시작해요.
+            </p>
+          </div>
+          <div class="card rv">
+            <div class="ch">
+              <img
+                src="./assets/character4.png"
+                alt="아무것도 남지 않은 빈 구멍"
+              />
+            </div>
+            <h3>두 번 실패하고 포기했어요</h3>
+            <p>
+              10장씩 나눠 보냈는데 앞의 두 건만 가고 나머지는 로딩만 돕니다.
+              결국 공유를 그만둬요.
+            </p>
+          </div>
+          <div class="card rv">
+            <div class="ch">
+              <img
+                src="./assets/character1.png"
+                alt="사진 한 장을 들고 있는 쏙이"
+              />
+            </div>
+            <h3>뭉텅이로 오면 안 열어봐요</h3>
+            <p>
+              미리보기도 안되고, 다운로드 할 때 로딩이 매번 걸려 확인하려면 전부
+              확인해야 해요. 한 장 때문에 전부를요.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARE -->
+    <section id="why">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <h2>그래서 쏙이 만들었어요</h2>
+          <p>로그인 여부도, 계정도, 번호도 묻지 않아요</p>
+        </div>
+        <div class="compare">
+          <div class="col old rv">
+            <h3>지금까지는?</h3>
+            <ul>
+              <li class="rv">❌ 30장씩 나눠서 여러 번</li>
+              <li class="rv">❌ 앱 설치하고 계정 만들고</li>
+              <li class="rv">❌ 미리보기 없이 전부 다운로드</li>
+              <li class="rv">❌ 번호·프로필까지 공개</li>
+            </ul>
+          </div>
+          <div class="vs rv">VS</div>
+          <div class="col new rv">
+            <img
+              class="badge-char rv-pop"
+              src="./assets/character5.png"
+              alt="따봉을 든 쏙이"
+            />
+            <h3>쏙으로는?</h3>
+            <ul>
+              <li class="rv">✅ 몇 장이든 한 번에</li>
+              <li class="rv">✅ 링크만 열면 끝</li>
+              <li class="rv">✅ 훑어보고 필요한 것만</li>
+              <li class="rv">✅ 이메일도 번호도 안 물어봄</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEPS -->
+    <section>
+      <div class="wrap">
+        <div class="sec-head rv">
+          <h2>30초면 충분해요</h2>
+          <p>준비물은 링크 하나!</p>
+        </div>
+        <div class="steps">
+          <div class="step rv">
+            <div class="num">1</div>
+            <h3>공유방 만들기</h3>
+            <p>이름만 정하면 끝.</p>
+            <p>가입 절차는 없어요.</p>
+            <div class="ch">
+              <img src="./assets/one.png" alt="구멍에서 빼꼼 올라온 쏙이" />
+            </div>
+          </div>
+          <div class="step rv">
+            <div class="num">2</div>
+            <h3>링크 뿌리기</h3>
+            <p>슬랙이든 카톡이든 메일이든,</p>
+            <p>아무 데나 붙여넣으면 돼요.</p>
+            <div class="ch">
+              <img src="./assets/two.png" alt="손을 흔드는 쏙이" />
+            </div>
+          </div>
+          <div class="step rv">
+            <div class="num">3</div>
+            <h3>골라 가기</h3>
+            <p>각자 한 번에 올리고,</p>
+            <p>받는 사람은 훑어본 뒤 필요한 것만 담아 가요.</p>
+            <div class="ch">
+              <img src="./assets/three.png" alt="두 손을 번쩍 든 쏙이" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section>
+      <div class="wrap">
+        <div class="sec-head rv"><h2>저희는 이런 걸 챙겼어요</h2></div>
+        <div class="cards4">
+          <div class="feat rv">
+            <span class="ico rv-pop">📦</span>
+            <h3>개수 제한이 없어요</h3>
+            <p>45장이든 200장이든</p>
+            <p>한 번에 올라가요.</p>
+          </div>
+          <div class="feat rv">
+            <span class="ico rv-pop">👀</span>
+            <h3>받기 전에 미리보기</h3>
+            <p>다운받지 않고도</p>
+            <p>뭐가 있는지 훑어봐요.</p>
+          </div>
+          <div class="feat rv">
+            <span class="ico rv-pop">✔️</span>
+            <h3>필요한 것만 골라 담기</h3>
+            <p>마음에 든 사진만 체크해서</p>
+            <p>한 번에 받아가요.</p>
+          </div>
+          <div class="feat rv">
+            <span class="ico rv-pop">🔓</span>
+            <h3>무설치와 무가입</h3>
+            <p>링크만 있으면</p>
+            <p>누구나 바로 사진 공유가 가능해요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USECASES -->
+    <section>
+      <div class="wrap">
+        <div class="sec-head rv">
+          <h2>이럴 때 특히 좋아요</h2>
+          <p>카톡으로 친구하기엔 아직 어색한, 20~30끼리 모이는 모임</p>
+        </div>
+        <div class="uses">
+          <div class="use rv">
+            <span class="emo rv-pop">📚</span>
+            <h3>스터디 그룹</h3>
+            <p>필요한 것만 골라가기</p>
+          </div>
+          <div class="use rv">
+            <span class="emo rv-pop">🏢</span>
+            <h3>사내 워크숍·팀 행사</h3>
+            <p>슬랙 스레드에 흩어지기 전에</p>
+          </div>
+          <div class="use rv">
+            <span class="emo rv-pop">🎤</span>
+            <h3>학회·컨퍼런스</h3>
+            <p>처음 만난 사이라도 번호 없이</p>
+          </div>
+          <div class="use rv">
+            <span class="emo rv-pop">🎓</span>
+            <h3>동아리 정기모임</h3>
+            <p>기수마다 쌓이는 활동 사진 아카이브</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section>
+      <div class="wrap">
+        <div class="final rv">
+          <h2>다음 모임엔,<br />쏙 링크 하나만 보내세요</h2>
+          <p class="lede">출시되면 가장 먼저 알려드릴게요!</p>
+          <form class="form" id="emailForm" onsubmit="submitForm(event)">
+            <input type="email" placeholder="이메일 주소" required id="email" />
+            <button class="btn" type="submit">출시 알림 받기</button>
+          </form>
+          <div class="done" id="done">
+            <img src="./assets/character5.png" alt="" /><span
+              >신청 완료! 출시되면 바로 알려드릴게요.</span
+            >
+          </div>
+          <img
+            class="peek"
+            src="./assets/characte8.png"
+            alt="아래에서 빼꼼 올라온 쏙이"
+          />
+        </div>
+      </div>
+    </section>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

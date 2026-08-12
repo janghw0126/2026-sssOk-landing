@@ -1,0 +1,895 @@
+:root {
+  --primary: #f26d2c;
+  --primary-dark: #d8551a;
+  --accent: #ffd166;
+  --ink: #2e221c;
+  --sub: #7a6b5e;
+  --bg: #fff6e9;
+  --surface: #ffffff;
+  --line: #efe2d4;
+  --r: 20px;
+  --r-lg: 28px;
+  --max: 1120px;
+  /* 등장 애니메이션 공통 이징. --pop 은 살짝 튕기는 쪽 */
+  --e: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --pop: cubic-bezier(0.2, 1.35, 0.4, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    "Pretendard Variable",
+    Pretendard,
+    -apple-system,
+    sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  /* 한글이 어절 중간에서 끊기지 않게 ("불편해 / 요." 방지).
+     keep-all 로 넘칠 수 있는 긴 문자열은 break-word 로 받아준다 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 좁은 화면에서 마지막 줄에 한 글자만 떨어지는 것을 막는다 */
+p {
+  text-wrap: pretty;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 110px 0;
+  position: relative;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.sec-head {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sec-head h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  margin-bottom: 14px;
+}
+
+.sec-head p {
+  color: var(--sub);
+  font-size: 17px;
+}
+
+/* ── reveal ──
+   transition 대신 animation 을 쓴다. .card/.feat/.use 처럼 자기 transition
+   (hover 용 transform, box-shadow) 을 따로 갖는 요소에 .rv 를 얹으면, 같은
+   transition 프로퍼티를 나중에 선언한 규칙이 통째로 덮어써서 opacity 전환이
+   증발하는 버그가 있었다. animation 은 transition 과 별개 프로퍼티라 충돌하지
+   않는다 */
+@keyframes rv-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rv-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rv-pop-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rv {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.rv.in {
+  animation: rv-in 0.7s var(--e) forwards;
+}
+
+/* opacity 만 쓰는 버전. transform 을 이미 다른 용도(회전·패럴랙스)로 쓰는
+   요소는 이걸 써야 등장 애니메이션이 그 transform 을 덮어쓰지 않는다 */
+.rv-fade {
+  opacity: 0;
+}
+
+.rv-fade.in {
+  animation: rv-fade-in 0.7s var(--e) forwards;
+}
+
+/* 아이콘·캐릭터처럼 톡 튀어나오는 느낌이 어울리는 요소용 */
+.rv-pop {
+  opacity: 0;
+}
+
+.rv-pop.in {
+  animation: rv-pop-in 0.55s var(--pop) forwards;
+}
+
+/* ── nav ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 12px 0;
+  background: rgba(255, 246, 233, 0.84);
+  backdrop-filter: blur(14px);
+}
+
+/* 헤더와 본문을 가르는 선. 바가 fixed 라 hr 을 바닥에 붙여 둔다 */
+nav hr {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  border: 0;
+  background: var(--line);
+}
+
+nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  /* line-height 1 이라야 줄상자 여백 없이 이미지와 글자 중심이 맞는다 */
+  line-height: 1;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 21px;
+  letter-spacing: -0.04em;
+}
+
+.logo img {
+  width: 42px;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 100px;
+  font-size: 15px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+  box-shadow: 0 4px 14px rgba(242, 109, 44, 0.3);
+}
+
+.btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(242, 109, 44, 0.4);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ── hero ── */
+.hero {
+  padding: 140px 0 90px;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 5.6vw, 62px);
+  margin-bottom: 22px;
+}
+
+.hero h1 .w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--primary);
+  position: relative;
+}
+
+.hero h1 em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 6px;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: hl 0.6s 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+
+@keyframes hl {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.hero .tagline {
+  font-size: clamp(21px, 2.6vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.hero .lede {
+  font-size: 19px;
+  color: var(--sub);
+  margin-bottom: 32px;
+  max-width: 560px;
+}
+
+/* h1 단어 스태거(main.js, ~0.62s 에 끝)가 다 끝난 뒤 이어받는다 */
+.hero .tagline.rv.in {
+  animation-delay: 0.5s;
+}
+
+.hero .lede.rv.in {
+  animation-delay: 0.62s;
+}
+
+/* form */
+.form {
+  display: flex;
+  gap: 10px;
+  max-width: 480px;
+  margin-bottom: 12px;
+}
+
+.form input {
+  flex: 1;
+  border: 2px solid var(--line);
+  background: #fff;
+  border-radius: 100px;
+  padding: 15px 22px;
+  font-size: 16px;
+  font-family: inherit;
+  color: var(--ink);
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  min-width: 0;
+}
+
+.form input::placeholder {
+  color: #b5a79a;
+}
+
+.form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(242, 109, 44, 0.14);
+}
+
+.form input.pulse {
+  animation: pulse 1s ease 2;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(242, 109, 44, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(242, 109, 44, 0.22);
+  }
+}
+
+.form .btn {
+  white-space: nowrap;
+  padding: 15px 26px;
+}
+
+.micro {
+  font-size: 13.5px;
+  color: var(--sub);
+}
+
+.done {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 2px solid var(--primary);
+  border-radius: 100px;
+  padding: 10px 24px 10px 12px;
+  max-width: 480px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.done img {
+  width: 52px;
+  flex-shrink: 0;
+}
+
+.done.on {
+  display: flex;
+  animation: pop 0.45s cubic-bezier(0.2, 1.5, 0.4, 1);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.94);
+    opacity: 0;
+  }
+
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* hero art — 제품 화면 3장 겹치기 */
+.art {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.phones {
+  position: relative;
+  width: min(100%, 480px);
+  /* 아래 .ph 반지름을 폭에 비례시키기 위한 컨테이너 */
+  container-type: inline-size;
+}
+
+/* 흰 베젤 프레임. PNG 모서리가 투명이라 프레임 흰색이 그대로 비쳐 보인다.
+   반지름 = PNG 자체 코너(폭의 7.7%) + padding 이라 화면 크기별로 값이 다름 */
+.ph {
+  position: absolute;
+  top: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 7px;
+  /* PNG 코너는 폭의 7.7%. 옆 화면은 45cqw 이므로 7.7% → 3.47cqw + padding.
+     앞 줄은 컨테이너 쿼리 미지원 브라우저용 폴백 */
+  border-radius: 24px;
+  border-radius: calc(3.47cqw + 7px);
+  box-shadow: 0 14px 30px rgba(46, 34, 28, 0.14);
+}
+
+.ph img {
+  display: block;
+  width: 100%;
+}
+
+.ph-main {
+  position: relative;
+  width: 52%;
+  margin: 0 auto;
+  z-index: 3;
+  /* 가운데는 52cqw 라 7.7% → 4cqw */
+  border-radius: 27px;
+  border-radius: calc(4cqw + 7px);
+  box-shadow: 0 24px 50px rgba(46, 34, 28, 0.18);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: rise 0.9s 0.35s cubic-bezier(0.2, 1.2, 0.4, 1) forwards;
+}
+
+/* --px/--py 는 main.js 의 마우스 패럴랙스가 넣는 값 */
+.ph-left {
+  left: 0;
+  top: 9%;
+  width: 45%;
+  z-index: 1;
+  transform: rotate(-5deg) translate(var(--px, 0px), var(--py, 0px));
+}
+
+.ph-right {
+  right: 0;
+  top: 6%;
+  width: 45%;
+  z-index: 2;
+  transform: rotate(4deg) translate(var(--px, 0px), var(--py, 0px));
+}
+
+/* .ph-main 의 rise(0.35s 지연, 0.9s) 를 감싸듯 좌우가 앞뒤로 따라온다 */
+.ph-left.rv-fade.in {
+  animation-delay: 0.15s;
+}
+
+.ph-right.rv-fade.in {
+  animation-delay: 0.25s;
+}
+
+@keyframes rise {
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.art-char {
+  position: absolute;
+  right: 3%;
+  bottom: -5%;
+  width: 19%;
+  z-index: 4;
+}
+
+/* ph-main 이 다 내려앉은 뒤 마지막으로 빼꼼 튀어나온다 */
+.art-char.rv-pop.in {
+  animation-delay: 0.95s;
+}
+
+@keyframes bob {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ── problem ── */
+.cards3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 30px 28px 34px;
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1),
+    box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px) rotate(-1deg);
+  box-shadow: 0 20px 44px rgba(46, 34, 28, 0.1);
+}
+
+.card .ch {
+  height: 120px;
+  display: grid;
+  place-items: end center;
+  margin-bottom: 18px;
+}
+
+.card .ch img {
+  max-height: 120px;
+  width: auto;
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.card:hover .ch img {
+  transform: translateY(-6px) scale(1.06);
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--sub);
+  font-size: 15.5px;
+}
+
+/* ── compare ── */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.col {
+  border-radius: var(--r-lg);
+  padding: 34px 30px;
+  position: relative;
+}
+
+.col.old {
+  background: #f3ede6;
+  color: #9c8e82;
+}
+
+.col.new {
+  background: linear-gradient(160deg, var(--primary), #ff9a6b);
+  color: #fff;
+  box-shadow: 0 20px 50px rgba(242, 109, 44, 0.28);
+}
+
+.col h3 {
+  font-size: 19px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.col li {
+  font-size: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-weight: 600;
+}
+
+.col.old li {
+  text-decoration: line-through;
+  text-decoration-color: rgba(156, 142, 130, 0.5);
+}
+
+.col .badge-char {
+  position: absolute;
+  top: -52px;
+  right: 18px;
+  width: 104px;
+}
+
+.vs {
+  display: grid;
+  place-items: center;
+  padding: 0 18px;
+  font-weight: 800;
+  color: var(--sub);
+  font-size: 14px;
+}
+
+/* ── steps ── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.step {
+  text-align: center;
+  padding: 0 12px;
+}
+
+.step .ch {
+  display: grid;
+  place-items: center;
+  /* 이미지가 텍스트 뒤에 오므로 여백은 위쪽에 준다 */
+  margin-top: 24px;
+}
+
+.step .ch img {
+  width: min(100%, 230px);
+  height: auto;
+}
+
+.step .num {
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 6px 16px rgba(242, 109, 44, 0.32);
+}
+
+.step h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.step p {
+  color: var(--sub);
+  font-size: 15.5px;
+}
+
+/* ── features ── */
+.cards4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.feat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 28px 22px;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.feat:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(46, 34, 28, 0.09);
+}
+
+.feat .ico {
+  font-size: 30px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.feat h3 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.feat p {
+  font-size: 14.5px;
+  color: var(--sub);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #7a5a00;
+  padding: 3px 9px;
+  border-radius: 100px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ── usecases ── */
+.uses {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.use {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 34px 22px 30px;
+  text-align: center;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.use:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(46, 34, 28, 0.09);
+}
+
+.use .emo {
+  font-size: 42px;
+  display: block;
+  margin-bottom: 16px;
+  line-height: 1;
+  transition: transform 0.3s;
+}
+
+.use:hover .emo {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+.use h3 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.use p {
+  font-size: 14px;
+  color: var(--sub);
+}
+
+/* ── final cta ── */
+.final {
+  background: #fffdf7;
+  border: 1px solid var(--line);
+  border-radius: 36px;
+  padding: 70px 40px 120px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(46, 34, 28, 0.06);
+}
+
+.final h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 12px;
+}
+
+.final p.lede {
+  color: var(--sub);
+  font-size: 17px;
+  margin-bottom: 32px;
+}
+
+.final .form {
+  margin: 0 auto 12px;
+}
+
+.final .done {
+  margin: 0 auto 12px;
+}
+
+.peek {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 210px;
+}
+
+@keyframes peek {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(26px);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    padding: 80px 0;
+  }
+
+  .hero {
+    padding: 110px 0 60px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .art {
+    order: -1;
+  }
+
+  .phones {
+    width: min(100%, 330px);
+  }
+
+  .hero .lede {
+    max-width: none;
+  }
+
+  .hero .lede br {
+    display: none;
+  }
+
+  .cards3,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .card .ch,
+  .step .ch {
+    height: auto;
+  }
+
+  .cards4,
+  .uses {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .compare {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .col .badge-char {
+    top: -46px;
+    right: 12px;
+    width: 88px;
+  }
+
+  .vs {
+    padding: 0;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  .form .btn {
+    width: 100%;
+  }
+
+  .final {
+    padding: 56px 24px 100px;
+    border-radius: 28px;
+  }
+
+  .peek {
+    width: 170px;
+  }
+}
+
+@media (max-width: 520px) {
+
+  .cards4,
+  .uses {
+    grid-template-columns: 1fr;
+  }
+
+  /* 좁은 화면에선 폰 목업이 한 단계당 650px 을 잡아먹어 스크롤이 길어진다 */
+  .step .ch img {
+    width: min(100%, 190px);
+  }
+
+  .sec-head {
+    margin-bottom: 44px;
+  }
+}
