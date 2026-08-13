@@ -65,13 +65,14 @@ function focusForm() {
     setTimeout(() => i.classList.remove("pulse"), 2200);
   }, 600);
 }
-// 대기명단 등록 — Supabase REST API 를 직접 호출한다.
-// 빌드 단계가 없는 정적 사이트라 키가 소스에 그대로 박히는데, publishable 키는
-// 브라우저 노출을 전제로 만들어진 키다. waitlist_emails 에 RLS 가 걸려 있어서
-// 이 키로는 insert 만 되고 select 는 빈 배열이 돌아온다(= 남의 이메일을 읽어갈 수 없다).
-// 절대 secret 키로 바꾸지 말 것 — 그건 RLS 를 통째로 우회한다.
-const SUPABASE_URL = "https://kxpaactclnhavfxetxyk.supabase.co";
-const SUPABASE_KEY = "sb_publishable_9_rXw5pgmxPEXy-fRqmILA_XIrYLdsg";
+// 대기명단 등록 — 같은 도메인의 서버리스 함수(api/waitlist.js)를 호출한다.
+//
+// DB 에 넣기만 할 거면 브라우저에서 Supabase REST 를 직접 불러도 되지만, 웰컴 메일을
+// 보내려면 SMTP 자격증명이 필요하고 그건 브라우저에 둘 수 없다. 그래서 저장과 발송을
+// 서버 쪽에 모아두고 여기서는 이메일만 넘긴다. 중복 처리·메일 실패 처리도 전부 저쪽 몫.
+//
+// 같은 오리진이라 CORS 설정이 필요 없다.
+const WAITLIST_ENDPOINT = "/api/waitlist";
 
 async function submitForm(e) {
   e.preventDefault();
@@ -87,20 +88,13 @@ async function submitForm(e) {
   btn.textContent = "등록 중…";
 
   try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist_emails`, {
+    const res = await fetch(WAITLIST_ENDPOINT, {
       method: "POST",
-      headers: {
-        apikey: SUPABASE_KEY,
-        Authorization: `Bearer ${SUPABASE_KEY}`,
-        "Content-Type": "application/json",
-        Prefer: "return=minimal",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
     });
 
-    // 409 = email unique 제약 위반 = 이미 등록한 사람.
-    // 다시 신청했다고 에러를 보여줄 이유는 없으니 성공과 똑같이 처리한다.
-    if (!res.ok && res.status !== 409) throw new Error(String(res.status));
+    if (!res.ok) throw new Error(String(res.status));
 
     form.style.display = "none";
     document.getElementById("done").classList.add("on");

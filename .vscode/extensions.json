@@ -1,0 +1,5 @@
+{
+  // supabase/functions 의 Deno 코드를 제대로 인식시키려면 필요하다.
+  // 설치하지 않으면 settings.json 의 deno.* 설정이 무시되고 오류 표시가 그대로 남는다.
+  "recommendations": ["denoland.vscode-deno"]
+}

@@ -1,0 +1,11 @@
+{
+  // supabase/functions 안은 Deno 런타임에서 돈다. 이 설정이 없으면 VS Code 가
+  // Node 기준으로 검사해서 `Deno` 전역과 URL import 를 전부 오류로 표시한다.
+  // enablePaths 로 범위를 좁혀야 main.js 같은 브라우저 코드까지 Deno 로 검사하지 않는다.
+  "deno.enable": true,
+  "deno.enablePaths": ["supabase/functions"],
+  "deno.lint": true,
+
+  // 위 경로 밖(랜딩 본체)은 그대로 기본 JS 검사를 쓴다
+  "javascript.validate.enable": true
+}
