@@ -97,13 +97,43 @@ Hero → 문제 3카드 → 비교(지금까지 vs 쏙으로) → 3 STEP → 기
 ### 주의사항
 
 - `assets/characte8.png` 는 **파일명 오타** (character9 의도). 4곳에서 참조 중 — 이름 고치면 HTML도 같이 수정
-- 이메일 폼은 **아직 백엔드 미연결**. `main.js` 의 `submitForm()` 에 TODO 있음
 - 폼은 페이지 전체에 하단 CTA 1개뿐 (Hero 폼은 의도적으로 제거)
+
+### 이메일 폼 ↔ Supabase
+
+`main.js` 의 `submitForm()` 이 Supabase REST API 를 직접 호출한다. 빌드 단계가 없어서
+라이브러리도 번들도 없이 `fetch` 하나로 끝낸다.
+
+| | |
+|---|---|
+| 프로젝트 | `kxpaactclnhavfxetxyk` |
+| 테이블 | `waitlist_emails` (`id`, `email` unique, `created_at`, `group_type`, `timing`, `interview`) |
+| 키 | **publishable 키만** 소스에 박혀 있음 |
+
+`group_type` / `timing` / `interview` 는 아래 남은 작업 3번(의도 수집)을 위해 미리 만들어둔
+빈 컬럼이다. 지금은 항상 `null`.
+
+**RLS 가 이 구조의 전부다.** 정적 사이트라 키가 브라우저에 노출되는데, 테이블에
+`insert` 정책만 있고 `select` 정책이 없어서 이 키로는 *넣기만 되고 읽기는 안 된다*.
+`select` 를 열거나 secret 키로 바꾸면 **이메일 명단이 통째로 공개된다.**
+
+정책이 살아 있는지는 이걸로 확인 — 빈 배열이 나와야 정상이다.
+
+```bash
+curl "https://kxpaactclnhavfxetxyk.supabase.co/rest/v1/waitlist_emails?select=*" -H "apikey: <publishable-key>"
+```
+
+중복 제출은 `409`(unique 위반)로 돌아오는데 **성공과 똑같이 처리**한다. 다시 신청한
+사람에게 에러를 보여줄 이유가 없다. 그 외 실패는 폼을 되돌리고 `#formErr` 에 안내를
+띄운다 — 실패했는데 완료 화면을 보여주면 등록된 줄 알고 떠나기 때문.
+
+웰컴 메일은 **없다**. 정적 사이트라 메일 발송 서버가 없다. 붙이려면 Supabase Edge
+Function + DB 트리거가 필요하다.
 
 ## 남은 작업
 
 1. **제품 화면 추가** — 최우선. 지금 랜딩은 "미리보기하고 골라 담는다"를 글로만 주장. 드라이브와 갈리는 유일한 지점인데 보여주질 못함. `_old/index.html` 의 인터랙티브 데모를 *받는 쪽이 그리드에서 골라 담는 장면* 으로 고쳐 되살리는 방향
-2. **폼 백엔드 연결** — Formspree / Supabase
+2. ~~**폼 백엔드 연결**~~ — 완료. Supabase `waitlist_emails` (위 참고)
 3. **의도 수집 재도입** — `_old/index.html` 에 있던 3단계 질문(어떤 모임 / 언제쯤 / 인터뷰 가능 여부). 가설 검증엔 이메일 주소보다 이 데이터가 훨씬 값짐
 4. **계측** — 아래 이벤트
 

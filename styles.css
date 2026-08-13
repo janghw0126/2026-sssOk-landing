@@ -347,6 +347,18 @@ nav .wrap {
   color: var(--sub);
 }
 
+/* 등록 실패 안내. 비어 있을 땐 숨겨서 평소에 빈 줄이 생기지 않게 한다 */
+.form-err {
+  margin: 12px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.form-err:empty {
+  display: none;
+}
+
 .done {
   display: none;
   align-items: center;

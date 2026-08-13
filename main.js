@@ -65,9 +65,50 @@ function focusForm() {
     setTimeout(() => i.classList.remove("pulse"), 2200);
   }, 600);
 }
-function submitForm(e) {
+// 대기명단 등록 — Supabase REST API 를 직접 호출한다.
+// 빌드 단계가 없는 정적 사이트라 키가 소스에 그대로 박히는데, publishable 키는
+// 브라우저 노출을 전제로 만들어진 키다. waitlist_emails 에 RLS 가 걸려 있어서
+// 이 키로는 insert 만 되고 select 는 빈 배열이 돌아온다(= 남의 이메일을 읽어갈 수 없다).
+// 절대 secret 키로 바꾸지 말 것 — 그건 RLS 를 통째로 우회한다.
+const SUPABASE_URL = "https://kxpaactclnhavfxetxyk.supabase.co";
+const SUPABASE_KEY = "sb_publishable_9_rXw5pgmxPEXy-fRqmILA_XIrYLdsg";
+
+async function submitForm(e) {
   e.preventDefault();
-  document.getElementById("emailForm").style.display = "none";
-  document.getElementById("done").classList.add("on");
-  // TODO: Formspree / Supabase 연동 + 이벤트 전송
+
+  const form = document.getElementById("emailForm");
+  const btn = form.querySelector(".btn");
+  const err = document.getElementById("formErr");
+  const label = btn.textContent;
+  const email = document.getElementById("email").value.trim().toLowerCase();
+
+  err.textContent = "";
+  btn.disabled = true;
+  btn.textContent = "등록 중…";
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist_emails`, {
+      method: "POST",
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    // 409 = email unique 제약 위반 = 이미 등록한 사람.
+    // 다시 신청했다고 에러를 보여줄 이유는 없으니 성공과 똑같이 처리한다.
+    if (!res.ok && res.status !== 409) throw new Error(String(res.status));
+
+    form.style.display = "none";
+    document.getElementById("done").classList.add("on");
+  } catch {
+    // 실패했는데 완료 화면을 보여주면 사용자는 등록된 줄 알고 떠난다.
+    // 폼을 그대로 두고 다시 시도할 수 있게 되돌린다.
+    btn.disabled = false;
+    btn.textContent = label;
+    err.textContent = "등록에 실패했어요. 잠시 후 다시 시도해주세요.";
+  }
 }
