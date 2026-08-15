@@ -788,7 +788,20 @@ nav .wrap {
 .final p.lede {
   color: var(--sub);
   font-size: 17px;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
+}
+
+/* 신청자 수 알림. 폼 바로 위 — 이메일을 넣기 직전에 읽히는 자리 */
+.final .proof {
+  display: inline-block;
+  margin-bottom: 28px;
+  padding: 7px 16px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--bg);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .final .form {

@@ -287,7 +287,10 @@
       <div class="wrap">
         <div class="final rv">
           <h2>다음 모임엔,<br />쏙 링크 하나만 보내보세요</h2>
-          <p class="lede">출시되면 가장 먼저 알려드릴게요!</p>
+          <p class="lede">베타가 열리면 신청하신 순서대로 초대드려요.</p>
+          <!-- 사회적 증거. "여러 명"은 실제 waitlist_emails 행 수가 뒷받침해야 하는
+               사실 주장이다 — 신청자가 없으면 이 줄은 지워야 한다. -->
+          <p class="proof">벌써 여러 명이 신청했어요!</p>
           <form class="form" id="emailForm" onsubmit="submitForm(event)">
             <input type="email" placeholder="이메일 주소" required id="email" />
             <button class="btn" type="submit">출시 알림 받기</button>
