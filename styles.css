@@ -366,7 +366,7 @@ nav .wrap {
   box-shadow: 0 24px 50px rgba(46, 34, 28, 0.18);
   opacity: 0;
   transform: translateY(40px);
-  animation: rise 0.9s 0.35s cubic-bezier(0.2, 1.2, 0.4, 1) forwards;
+  animation: rise 0.6s 0.1s cubic-bezier(0.2, 1.2, 0.4, 1) forwards;
 }
 
 /* --px/--py 는 main.js 의 마우스 패럴랙스가 넣는 값 */
@@ -386,21 +386,21 @@ nav .wrap {
   transform: rotate(4deg) translate(var(--px, 0px), var(--py, 0px));
 }
 
-/* 왼쪽 → 오른쪽 → 가운데(.ph-main, 0.35s) 순서로 하나씩 뜬다.
+/* 왼쪽 → 오른쪽 → 가운데(.ph-main, 0.1s) 순서로 하나씩 뜬다. 처음 화면이 비어 보이지 않게 짧게 둔다.
    duration·이징은 .ph-main 의 rise 와 맞춘다 (rv-fade-in 기본값은 0.7s 라
    속도가 달라 보였다) */
 .ph-left.rv-fade.in,
 .ph-right.rv-fade.in {
-  animation-duration: 0.9s;
+  animation-duration: 0.6s;
   animation-timing-function: cubic-bezier(0.2, 1.2, 0.4, 1);
 }
 
 .ph-left.rv-fade.in {
-  animation-delay: 0.15s;
+  animation-delay: 0s;
 }
 
 .ph-right.rv-fade.in {
-  animation-delay: 0.25s;
+  animation-delay: 0.05s;
 }
 
 @keyframes rise {
@@ -420,7 +420,7 @@ nav .wrap {
 
 /* 사진 3장과 같은 타이밍에 같이 뜬다 */
 .art-char.rv-pop.in {
-  animation-delay: 0.35s;
+  animation-delay: 0.1s;
 }
 
 @keyframes bob {

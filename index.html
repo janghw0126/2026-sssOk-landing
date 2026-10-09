@@ -31,8 +31,18 @@
     <meta property="og:image:alt" content="링크 하나로 사진 모으고 쏙! — 사진을 든 쏙이" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" href="./assets/logo.png" />
-    <link rel="preload" as="image" href="./assets/onboarding.png" />
+    <!-- 탭 아이콘은 1MB 원본(logo.png) 대신 180px 로 줄인 파일 — 첫 로딩 대역폭을 히어로 이미지에 양보 -->
+    <link rel="icon" href="./assets/logo-180.png" />
+    <link rel="apple-touch-icon" href="./assets/logo-180.png" />
+    <!-- 히어로 폰 세 장을 HTML 파싱과 동시에 받기 시작한다. 가운데(onboarding)가 가장 먼저 -->
+    <link
+      rel="preload"
+      as="image"
+      href="./assets/onboarding.png"
+      fetchpriority="high"
+    />
+    <link rel="preload" as="image" href="./assets/four.png" />
+    <link rel="preload" as="image" href="./assets/five.png" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link
       rel="stylesheet"
@@ -93,6 +103,7 @@
             <div class="ph ph-main">
               <img
                 src="./assets/onboarding.png"
+                fetchpriority="high"
                 alt="쏙 첫 화면 — 링크로 모으고 쏙 골라 받기, 링크 만들기 버튼"
               />
             </div>
