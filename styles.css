@@ -589,7 +589,6 @@ nav .wrap {
 }
 
 .step .ch {
-  position: relative;
   display: grid;
   place-items: center;
   /* 이미지가 텍스트 뒤에 오므로 여백은 위쪽에 준다 */
@@ -597,29 +596,9 @@ nav .wrap {
   padding: 16px 0;
 }
 
-/* 폰 뒤 광채 — 연한 노랑·주황으로 옅어지는 원형 그라데이션으로 시선을 화면에 모은다 */
-.step .ch::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(170%, 420px);
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 209, 102, 0.3) 0%,
-    rgba(242, 109, 44, 0.08) 42%,
-    rgba(242, 109, 44, 0) 68%
-  );
-  pointer-events: none;
-}
-
 /* STEP 목업(create·invite·pick, 390×705)은 모서리가 투명(반지름 30px = 폭 7.7%, 높이 4.26%)이다.
    같은 반지름으로 흰 베젤(6px)과 바깥 선을 둘러 폰처럼 보이게 하고, 연한 주황빛 그림자로 띄운다 */
 .step .ch img {
-  position: relative;
   width: min(100%, 230px);
   height: auto;
   border-radius: 7.7% / 4.26%;
