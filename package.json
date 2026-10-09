@@ -3,13 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
+    "start": "vercel dev",
     "deploy": "vercel --prod"
   },
   "dependencies": {
     "nodemailer": "^9.0.5"
   },
   "devDependencies": {
-    "vercel": "^57.0.0"
+    "vercel": "^63.1.0"
   }
 }
