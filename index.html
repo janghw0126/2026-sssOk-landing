@@ -26,7 +26,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href="./assets/logo.png" />
-    <link rel="preload" as="image" href="./assets/four.png" />
+    <link rel="preload" as="image" href="./assets/onboarding.png" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link
       rel="stylesheet"
@@ -40,7 +40,12 @@
         <a href="#" class="logo"
           >쏙 <img src="./assets/characte8.png" alt=""
         /></a>
-        <button class="btn" onclick="focusForm()">출시 알림 받기</button>
+        <a
+          class="btn nav-cta"
+          id="navCta"
+          href="https://www.ssssok.com/?utm_source=landing&amp;utm_medium=web&amp;utm_content=nav"
+          >지금 바로 사진 모으기</a
+        >
       </div>
     </nav>
 
@@ -52,20 +57,25 @@
             <span class="w">사진</span> <span class="w">공유,</span><br /><span
               class="w"
               ><em>쏙</em>으로</span
-            ><br /><span class="w">더</span> <span class="w">가볍게.</span>
+            ><br /><span class="w">더</span> <span class="w">가볍게!</span>
           </h1>
-          <p class="tagline rv rv-hero">모으고, 고르고, 쏙 나누세요</p>
-          <p class="lede rv rv-hero">
-            여행이나 모임이 끝난 뒤, 링크 하나만 보내면 끝!<br />
-            설치 없이 바로 들어와 사진을 올리고 원하는 사진만 받아가요.
-          </p>
+          <p class="tagline rv rv-hero">링크로 모으고, 쏙 골라 받아요</p>
+
+          <div class="cta-row rv rv-hero">
+            <a
+              class="btn btn-lg"
+              id="heroCta"
+              href="https://www.ssssok.com/?utm_source=landing&amp;utm_medium=web&amp;utm_content=hero"
+              >지금 바로 사진 모으기</a
+            >
+          </div>
         </div>
         <div class="art" id="art">
           <div class="phones">
             <div class="ph ph-left rv-fade rv-hero">
               <img
-                src="./assets/one.png"
-                alt="쏙 첫 화면 — 사진 모으고 바로 쏙 나누기"
+                src="./assets/four.png"
+                alt="공유방에서 사진을 훑어보고 필요한 것만 골라 담는 화면"
               />
             </div>
             <div class="ph ph-right rv-fade rv-hero">
@@ -76,15 +86,10 @@
             </div>
             <div class="ph ph-main">
               <img
-                src="./assets/four.png"
-                alt="공유방에서 사진을 훑어보고 필요한 것만 골라 담는 화면"
+                src="./assets/onboarding.png"
+                alt="쏙 첫 화면 — 링크로 모으고 쏙 골라 받기, 링크 만들기 버튼"
               />
             </div>
-            <img
-              class="art-char rv-pop rv-hero"
-              src="./assets/characte8.png"
-              alt="구멍에서 빼꼼 올라온 쏙이"
-            />
           </div>
         </div>
       </div>
@@ -101,28 +106,20 @@
           <div class="card rv">
             <div class="ch">
               <img
-                src="./assets/character3.png"
-                alt="사진을 잔뜩 들고 있는 쏙이"
-              />
-            </div>
-            <h3>전송할 95장이 4번에 걸쳐 쪼개져요</h3>
-            <p>
-              카톡은 한 번에 30장까지만 보낼 수 있어요. 30·30·30·5로 쪼개 보내다
-              보면 어디까지 보냈는지 헷갈려요.
-            </p>
-          </div>
-          <div class="card rv">
-            <div class="ch">
-              <img
                 src="./assets/character4.png"
                 alt="아무것도 남지 않은 빈 구멍"
               />
             </div>
-            <h3>여기저기 흩어져서 사라져요</h3>
-            <p>
-              단톡방·스레드·DM에 따로따로 올라오다 보니, 나중엔 어디에 뭐가
-              있었는지 찾을 수가 없어요.
-            </p>
+            <h3>잠깐 나갔다 왔더니 업로드하던 사진이 날아갔어요</h3>
+          </div>
+          <div class="card rv">
+            <div class="ch">
+              <img
+                src="./assets/character3.png"
+                alt="사진을 잔뜩 들고 있는 쏙이"
+              />
+            </div>
+            <h3>그 사진, DM이었나 카톡이었나…</h3>
           </div>
           <div class="card rv">
             <div class="ch">
@@ -131,11 +128,7 @@
                 alt="사진 한 장을 들고 있는 쏙이"
               />
             </div>
-            <h3>뭉텅이로 받으면 안 열어봐요</h3>
-            <p>
-              미리보기가 오래 걸려서, 확인하려면 일일이 다운로드해야 해요. 한 장
-              보려고 전부를 받아야 하니, 그냥 안 열어보게 되죠.
-            </p>
+            <h3>내 사진 한 장 찾으려고 전부 내려받아요</h3>
           </div>
         </div>
       </div>
@@ -148,30 +141,37 @@
           <h2>그래서 쏙이 만들었어요</h2>
           <p>로그인 여부도, 계정도, 전화번호도 묻지 않아요</p>
         </div>
-        <div class="compare">
-          <div class="col old rv">
-            <h3>지금까지는?</h3>
-            <ul>
-              <li class="rv">❌ 30장씩 나눠서 여러 번</li>
-              <li class="rv">❌ 앱 설치하고 계정 만들고</li>
-              <li class="rv">❌ 미리보기 없이 전부 다운로드</li>
-              <li class="rv">❌ 번호·프로필까지 공개</li>
-            </ul>
+        <!-- 한 줄에 "불편 → 해결" 을 짝지어 보여준다. 쏙 쪽 문구는 히어로 "쏙" 과 같은 노란 형광펜 -->
+        <div class="vs-table rv">
+          <img
+            class="badge-char rv-pop"
+            src="./assets/character5.png"
+            alt="따봉을 든 쏙이"
+          />
+          <div class="vs-head">
+            <span>지금까지는..</span>
+            <span></span>
+            <span class="now-label">쏙으로는!</span>
           </div>
-          <div class="vs rv">VS</div>
-          <div class="col new rv">
-            <img
-              class="badge-char rv-pop"
-              src="./assets/character5.png"
-              alt="따봉을 든 쏙이"
-            />
-            <h3>쏙으로는!</h3>
-            <ul>
-              <li class="rv">✅ 몇 장이든 한 번에</li>
-              <li class="rv">✅ 링크만 열면 끝</li>
-              <li class="rv">✅ 훑어보고 필요한 것만</li>
-              <li class="rv">✅ 이메일도 번호도 안 물어봄</li>
-            </ul>
+          <div class="vs-row rv">
+            <span class="was">메신저·DM에 흩어지고</span>
+            <span class="arrow" aria-hidden="true">→</span>
+            <span class="now"><mark>한 링크에 다 모여요</mark></span>
+          </div>
+          <div class="vs-row rv">
+            <span class="was">앱 설치하고 계정 만들고</span>
+            <span class="arrow" aria-hidden="true">→</span>
+            <span class="now"><mark>링크만 열면 끝</mark></span>
+          </div>
+          <div class="vs-row rv">
+            <span class="was">미리보기 없이 전부 다운로드</span>
+            <span class="arrow" aria-hidden="true">→</span>
+            <span class="now"><mark>훑어보고 필요한 것만</mark></span>
+          </div>
+          <div class="vs-row rv">
+            <span class="was">번호·프로필까지 공개</span>
+            <span class="arrow" aria-hidden="true">→</span>
+            <span class="now"><mark>이메일도 번호도 안 물어봐요</mark></span>
           </div>
         </div>
       </div>
@@ -181,70 +181,263 @@
     <section>
       <div class="wrap">
         <div class="sec-head rv">
-          <h2>30초면 충분해요</h2>
+          <h2>10초면 충분해요</h2>
           <p>준비물은 링크 하나!</p>
         </div>
         <div class="steps">
           <div class="step rv">
-            <div class="num">1</div>
-            <h3>공유방 만들기</h3>
-            <p>이름만 정하면 끝.</p>
-            <p>가입 절차는 없어요.</p>
+            <div class="step-body">
+              <div class="num">1</div>
+              <h3>공유방 만들기</h3>
+              <p>방 제목 정하고, 며칠 열어둘지만 고르면 끝!</p>
+              <p>가입도 없어요.</p>
+            </div>
             <div class="ch">
-              <img src="./assets/one.png" alt="구멍에서 빼꼼 올라온 쏙이" />
+              <img
+                src="./assets/create.png"
+                alt="방 제목·이름·업로드 권한·만료 기간을 정하는 방 만들기 화면"
+              />
             </div>
           </div>
           <div class="step rv">
-            <div class="num">2</div>
-            <h3>링크 뿌리기</h3>
-            <p>슬랙이든 카톡이든 메일이든,</p>
-            <p>아무 데나 붙여넣으면 돼요.</p>
+            <div class="step-body">
+              <div class="num">2</div>
+              <h3>링크나 QR로 초대하기</h3>
+              <p>헤어진 뒤엔 링크로,</p>
+              <p>모여 있을 땐 QR로</p>
+            </div>
             <div class="ch">
-              <img src="./assets/two.png" alt="손을 흔드는 쏙이" />
+              <img
+                src="./assets/invite.png"
+                alt="링크 공유·QR 코드 공유·다른 기기에서 이어하기 메뉴"
+              />
             </div>
           </div>
           <div class="step rv">
-            <div class="num">3</div>
-            <h3>골라 가기</h3>
-            <p>각자 한 번에 올리고,</p>
-            <p>받는 사람은 훑어본 뒤 필요한 것만 담아 가요.</p>
+            <div class="step-body">
+              <div class="num">3</div>
+              <h3>골라 가기</h3>
+              <p>올리는 즉시 다 같이 보고,</p>
+              <p>필요한 것만 골라 받아요.</p>
+            </div>
             <div class="ch">
-              <img src="./assets/three.png" alt="두 손을 번쩍 든 쏙이" />
+              <img
+                src="./assets/pick.png"
+                alt="공유방에서 사진 4장을 골라 다운로드하는 화면"
+              />
             </div>
           </div>
+        </div>
+        <!-- 폰 폭에서만 보이는 진행 점 (main.js 가 .on 을 옮긴다) -->
+        <div class="step-dots" aria-hidden="true">
+          <span class="on"></span><span></span><span></span>
         </div>
       </div>
     </section>
 
-    <!-- FEATURES -->
+    <!-- FEATURES — 기능을 글로 설명하지 않고 미니 화면으로 "보여준다".
+         각 .demo 는 화면에 들어오면 main.js 가 반복 재생한다 (모션 줄이기 설정이면 최종 상태로 고정) -->
     <section>
       <div class="wrap">
-        <div class="sec-head rv"><h2>저희는 이런 걸 챙겼어요</h2></div>
-        <div class="cards4">
-          <div class="feat rv">
-            <span class="ico rv-pop">📦</span>
-            <h3>개수 제한이 없어요</h3>
-            <p>45장이든 200장이든</p>
-            <p>한 번에 올라가요.</p>
-          </div>
-          <div class="feat rv">
-            <span class="ico rv-pop">👀</span>
-            <h3>받기 전에 미리보기</h3>
-            <p>다운받지 않고도</p>
-            <p>뭐가 있는지 한눈에 훑어봐요.</p>
-          </div>
-          <div class="feat rv">
-            <span class="ico rv-pop">✔️</span>
-            <h3>필요한 것만 골라 담기</h3>
-            <p>마음에 든 사진만 체크해서</p>
-            <p>한 번에 받아가요.</p>
-          </div>
-          <div class="feat rv">
-            <span class="ico rv-pop">🔓</span>
-            <h3>무설치와 무가입</h3>
-            <p>링크만 있으면</p>
-            <p>누구나 바로 사진 공유가 가능해요.</p>
-          </div>
+        <div class="sec-head rv">
+          <h2>사진이 많아도, 고르는 건 쉽게</h2>
+          <p>찾고, 추리고, 나눠 담기까지 한 곳에서!</p>
+        </div>
+        <!-- 폰 폭에서만 보이는 탭. 데모를 하나씩 바꿔 보여준다 (main.js) -->
+        <div class="demo-tabs" role="tablist">
+          <button type="button" role="tab" class="on" data-demo="demoSearch">
+            <span aria-hidden="true">🔍</span> 검색
+          </button>
+          <button type="button" role="tab" data-demo="demoLike">
+            <span aria-hidden="true">♥</span> 좋아요
+          </button>
+          <button type="button" role="tab" data-demo="demoFolder">
+            <span aria-hidden="true">📁</span> 폴더
+          </button>
+        </div>
+        <div class="demos">
+          <article class="demo rv" id="demoSearch">
+            <div class="d-screen">
+              <div class="d-search">
+                <span aria-hidden="true">🔍</span>
+                <span class="d-q" data-q="같이 먹은 음식 사진"></span>
+              </div>
+              <div class="d-grid">
+                <img
+                  src="./assets/photo-1.jpg"
+                  alt=""
+                  loading="lazy"
+                  class="hit"
+                />
+                <img src="./assets/photo-2.jpg" alt="" loading="lazy" />
+                <img
+                  src="./assets/photo-3.jpg"
+                  alt=""
+                  loading="lazy"
+                  class="hit"
+                />
+                <img src="./assets/photo-4.jpg" alt="" loading="lazy" />
+                <img
+                  src="./assets/photo-5.jpg"
+                  alt=""
+                  loading="lazy"
+                  class="hit"
+                />
+                <img src="./assets/photo-6.jpg" alt="" loading="lazy" />
+                <img src="./assets/photo-7.jpg" alt="" loading="lazy" />
+                <img
+                  src="./assets/photo-8.jpg"
+                  alt=""
+                  loading="lazy"
+                  class="hit"
+                />
+                <img src="./assets/photo-9.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+            <h3>단어로 찾는 사진 검색</h3>
+            <p>“같이 먹은 음식 사진”처럼 검색하면 찾아줘요.</p>
+          </article>
+          <article class="demo rv" id="demoLike">
+            <div class="d-screen">
+              <div class="d-bar">
+                <b>주말 나들이 ☀️</b><span>사진 9장</span>
+              </div>
+              <div class="d-grid d-grid-like">
+                <div class="d-cell">
+                  <img src="./assets/photo-1.jpg" alt="" loading="lazy" /><span
+                    class="d-heart"
+                    data-n="5"
+                    >5</span
+                  >
+                </div>
+                <div class="d-cell">
+                  <img src="./assets/photo-2.jpg" alt="" loading="lazy" /><span
+                    class="d-heart"
+                    data-n="1"
+                    >1</span
+                  >
+                </div>
+                <div class="d-cell">
+                  <img src="./assets/photo-3.jpg" alt="" loading="lazy" /><span
+                    class="d-heart"
+                    data-n="2"
+                    >2</span
+                  >
+                </div>
+                <div class="d-cell">
+                  <img src="./assets/photo-4.jpg" alt="" loading="lazy" /><span
+                    class="d-heart"
+                    data-n="3"
+                    >3</span
+                  >
+                </div>
+                <div class="d-cell">
+                  <img src="./assets/photo-5.jpg" alt="" loading="lazy" /><span
+                    class="d-heart"
+                    data-n="0"
+                    >0</span
+                  >
+                </div>
+                <div class="d-cell">
+                  <img src="./assets/photo-6.jpg" alt="" loading="lazy" /><span
+                    class="d-heart"
+                    data-n="1"
+                    >1</span
+                  >
+                </div>
+                <div class="d-cell">
+                  <img src="./assets/photo-7.jpg" alt="" loading="lazy" /><span
+                    class="d-heart"
+                    data-n="2"
+                    >2</span
+                  >
+                </div>
+                <div class="d-cell">
+                  <img src="./assets/photo-8.jpg" alt="" loading="lazy" /><span
+                    class="d-heart"
+                    data-n="0"
+                    >0</span
+                  >
+                </div>
+                <div class="d-cell">
+                  <img src="./assets/photo-9.jpg" alt="" loading="lazy" /><span
+                    class="d-heart"
+                    data-n="1"
+                    >1</span
+                  >
+                </div>
+              </div>
+            </div>
+            <h3>좋아요로 마음 표시하기</h3>
+            <p>다들 좋아한 사진이 한눈에 보여요.</p>
+          </article>
+          <article class="demo rv" id="demoFolder">
+            <div class="d-screen">
+              <div class="d-chips">
+                <span class="on" data-f="all">전체 9</span>
+                <span data-f="d1">1일차 4</span>
+                <span data-f="d2">2일차 5</span>
+              </div>
+              <div class="d-grid">
+                <img
+                  src="./assets/photo-1.jpg"
+                  alt=""
+                  loading="lazy"
+                  data-f="d1"
+                />
+                <img
+                  src="./assets/photo-2.jpg"
+                  alt=""
+                  loading="lazy"
+                  data-f="d1"
+                />
+                <img
+                  src="./assets/photo-3.jpg"
+                  alt=""
+                  loading="lazy"
+                  data-f="d1"
+                />
+                <img
+                  src="./assets/photo-4.jpg"
+                  alt=""
+                  loading="lazy"
+                  data-f="d1"
+                />
+                <img
+                  src="./assets/photo-5.jpg"
+                  alt=""
+                  loading="lazy"
+                  data-f="d2"
+                />
+                <img
+                  src="./assets/photo-6.jpg"
+                  alt=""
+                  loading="lazy"
+                  data-f="d2"
+                />
+                <img
+                  src="./assets/photo-7.jpg"
+                  alt=""
+                  loading="lazy"
+                  data-f="d2"
+                />
+                <img
+                  src="./assets/photo-8.jpg"
+                  alt=""
+                  loading="lazy"
+                  data-f="d2"
+                />
+                <img
+                  src="./assets/photo-9.jpg"
+                  alt=""
+                  loading="lazy"
+                  data-f="d2"
+                />
+              </div>
+            </div>
+            <h3>폴더로 나눠 담기</h3>
+            <p>필요한 묶음만 열어 보고 받아가요.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -254,19 +447,12 @@
       <div class="wrap">
         <div class="sec-head rv">
           <h2>이럴 때 특히 좋아요</h2>
-          <p>카톡으로 친구하기엔 아직 어색한</p>
-          <p>20~30대끼리 모이는 모임</p>
         </div>
         <div class="uses">
           <div class="use rv">
-            <span class="emo rv-pop">📚</span>
-            <h3>스터디 그룹</h3>
-            <p>필요한 것만 골라가기</p>
-          </div>
-          <div class="use rv">
-            <span class="emo rv-pop">🏢</span>
-            <h3>사내 워크숍·팀 행사</h3>
-            <p>슬랙 스레드에 흩어지기 전에</p>
+            <span class="emo rv-pop">🚌</span>
+            <h3>현지 투어</h3>
+            <p>가이드가 QR이나 링크 하나로 오늘 사진 전달</p>
           </div>
           <div class="use rv">
             <span class="emo rv-pop">🎤</span>
@@ -274,9 +460,14 @@
             <p>처음 만난 사이라도 번호 없이</p>
           </div>
           <div class="use rv">
-            <span class="emo rv-pop">🎓</span>
-            <h3>동아리 정기모임</h3>
-            <p>기수마다 쌓이는 활동 사진 아카이브</p>
+            <span class="emo rv-pop">🎫</span>
+            <h3>콘서트 동행</h3>
+            <p>오늘 처음 본 동행과도 사진 나누기</p>
+          </div>
+          <div class="use rv">
+            <span class="emo rv-pop">👥</span>
+            <h3>친구들끼리</h3>
+            <p>단톡방에 각자 올리던 사진, 링크 하나에</p>
           </div>
         </div>
       </div>
@@ -286,21 +477,12 @@
     <section>
       <div class="wrap">
         <div class="final rv">
-          <h2>다음 모임엔,<br />쏙 링크 하나만 보내보세요</h2>
-          <p class="lede">베타가 열리면 신청하신 순서대로 초대드려요.</p>
-          <!-- 사회적 증거. "여러 명"은 실제 waitlist_emails 행 수가 뒷받침해야 하는
-               사실 주장이다 — 신청자가 없으면 이 줄은 지워야 한다. -->
-          <p class="proof">벌써 여러 명이 신청했어요!</p>
-          <form class="form" id="emailForm" onsubmit="submitForm(event)">
-            <input type="email" placeholder="이메일 주소" required id="email" />
-            <button class="btn" type="submit">출시 알림 받기</button>
-          </form>
-          <p class="form-err" id="formErr" role="alert"></p>
-          <div class="done" id="done">
-            <img src="./assets/character5.png" alt="" /><span
-              >신청 완료! 출시되면 바로 알려드릴게요.</span
-            >
-          </div>
+          <h2>다음 모임엔,<br />쏙 링크 하나만 보내보세요!</h2>
+          <a
+            class="btn btn-lg"
+            href="https://www.ssssok.com/?utm_source=landing&amp;utm_medium=web&amp;utm_content=final"
+            >지금 바로 사진 모으러 가기</a
+          >
           <img
             class="peek"
             src="./assets/characte8.png"
