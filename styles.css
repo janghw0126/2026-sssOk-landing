@@ -383,8 +383,13 @@ nav .wrap {
   transform: rotate(4deg) translate(var(--px, 0px), var(--py, 0px));
 }
 
-/* 히어로 폰은 등장 애니메이션 없이 처음부터 보인다. 투명하게 숨겼다 띄우면
-   이미지를 아무리 빨리 받아도 "늦게 뜬다"고 느껴져서 걷어냈다 */
+/* 폰 3장은 .phones 통째로 h1 과 함께 올라온다. 하나씩 애니메이션하면
+   .ph-left/.ph-right 의 transform(회전·패럴랙스)을 덮어쓰니 부모에 건다.
+   딜레이 없이 짧게 — 늦게 뜨면 "이미지가 느리다"고 느껴진다 */
+.phones.rv.in {
+  animation-duration: 0.62s;
+}
+
 .art-char {
   position: absolute;
   right: 3%;
