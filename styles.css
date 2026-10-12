@@ -456,6 +456,7 @@ nav .wrap {
 }
 
 .card p {
+  margin-top: 10px;
   color: var(--sub);
   font-size: 15.5px;
 }
@@ -943,7 +944,6 @@ nav .wrap {
     grid-template-columns: 1fr;
   }
 
-  /* 1열이면 제목 한 줄짜리 카드가 세로로 너무 길어진다 — 그림 왼쪽·제목 오른쪽 가로형으로 */
   .cards3 {
     gap: 14px;
   }
@@ -984,29 +984,48 @@ nav .wrap {
     font-size: 16px;
   }
 
+  /* 1열 세로형 — 쏙이는 위 가운데, 글은 아래 왼쪽 정렬 */
   .cards3 .card {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 18px 22px;
+    padding: 22px 22px 24px;
     text-align: left;
   }
 
   .cards3 .card .ch {
-    flex: 0 0 96px;
-    height: 84px;
-    margin: 0;
-    place-items: center;
+    height: 82px;
+    margin-bottom: 14px;
   }
 
+  /* 납작한 구멍 그림(character4)은 높이보다 폭이 먼저 차서 혼자 커 보인다 */
   .cards3 .card .ch img {
-    max-height: 84px;
-    max-width: 96px;
-    object-fit: contain;
+    max-height: 82px;
+    max-width: 56%;
+  }
+
+  .cards3 .card:first-child .ch img {
+    max-width: 48%;
+  }
+
+  .cards3 .card:nth-child(2) .ch {
+    height: 94px;
+  }
+
+  .cards3 .card:nth-child(2) .ch img {
+    max-height: 94px;
   }
 
   .cards3 .card h3 {
-    font-size: 17px;
+    font-size: 19px;
+    font-weight: 800;
+  }
+
+  .cards3 .card p {
+    margin-top: 6px;
+    font-size: 14px;
+  }
+
+  /* 데스크톱용 강제 줄바꿈 — 폭이 달라지면 오히려 어색하게 끊긴다 */
+  .cards3 .card p br {
+    display: none;
   }
 
   /* .card .ch 는 고정 높이(120px)를 유지한다 — 캐릭터 PNG마다 세로 비율이
@@ -1117,13 +1136,19 @@ nav .wrap {
   }
 
   .cards3 .card .ch {
-    flex-basis: 76px;
-    height: 68px;
+    height: 72px;
   }
 
   .cards3 .card .ch img {
-    max-height: 68px;
-    max-width: 76px;
+    max-height: 72px;
+  }
+
+  .cards3 .card:nth-child(2) .ch {
+    height: 82px;
+  }
+
+  .cards3 .card:nth-child(2) .ch img {
+    max-height: 82px;
   }
 
   .final {
